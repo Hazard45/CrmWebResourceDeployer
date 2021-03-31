@@ -68,6 +68,13 @@ namespace CrmWebResourceDeployer
                 {
                     Console.WriteLine($"No web resources found in this folder: {parameters.WebResourcesRootPath}");
                 }
+
+                if (!parameters.CloseIfSucceeded)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Done");
+                    Console.ReadKey();
+                }
             }
             catch (Exception ex)
             {
@@ -75,11 +82,6 @@ namespace CrmWebResourceDeployer
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("Customizations NOT published due to error");
-            }
-            finally
-            {
-                Console.WriteLine();
-                Console.WriteLine("Done");
                 Console.ReadKey();
             }
         }

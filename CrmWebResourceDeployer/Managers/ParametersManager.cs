@@ -44,6 +44,10 @@ namespace CrmWebResourceDeployer.Managers
                         case "s":
                             parameters.IncludeSlashAfterPrefix = Convert.ToBoolean(paramValue);
                             break;
+                        case "CloseIfSucceeded":
+                        case "c":
+                            parameters.CloseIfSucceeded = Convert.ToBoolean(paramValue);
+                            break;
                         case "":
                             throw new Exception("Empty parameters are not allowed");
                         default:
@@ -77,6 +81,9 @@ namespace CrmWebResourceDeployer.Managers
 
                 Console.Write("Include Slash In Name: ");
                 parameters.IncludeSlashAfterPrefix = Convert.ToBoolean(Console.ReadLine());
+
+                Console.Write("Close If Succeeded: ");
+                parameters.CloseIfSucceeded = Convert.ToBoolean(Console.ReadLine());
             }
             CheckRequiredkParameters(parameters);
             return parameters;
@@ -124,10 +131,11 @@ Parameters:
 -OrganizationServiceUrl: [or -o:]    CRM organization service URL (required)
 -PublisherPrefix: [or -x:]           CRM publisher prefix ('_' is not needed) (required)
 -WebResourcesRootPath: [or -w:]      Folder path where to search web resources (required)
--IgnoreFiles: [or -i:]               File names to ignore (not required, separated by '|' symbol)
--PublishChanges: [or -p:]            Publish customizations in CRM (not required, default is 'False')
--IncludeExtensionInName: [or -e:]    Include file extension in web resource name (not required, default is 'False')
--IncludeSlashAfterPrefix: [or -s:]   Include slash in web resource name after publisher prefix (not required, default is 'False')");
+-IgnoreFiles: [or -i:]               File names to ignore (optional, separated by '|' symbol)
+-PublishChanges: [or -p:]            Publish customizations in CRM (optional, default is 'False')
+-IncludeExtensionInName: [or -e:]    Include file extension in web resource name (optional, default is 'False')
+-IncludeSlashAfterPrefix: [or -s:]   Include slash in web resource name after publisher prefix (optional, default is 'False')
+-CloseIfSucceeded: [or -c:]          Close application if succeeded (optional, default is 'False')");
             Console.WriteLine();
             Console.WriteLine();
         }

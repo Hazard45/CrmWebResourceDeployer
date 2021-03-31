@@ -15,5 +15,7 @@
         public bool IncludeExtensionInName { get; set; } = false;
 
         public bool IncludeSlashAfterPrefix { get; set; } = false;
+
+        public bool CloseIfSucceeded { get; set; } = false;
     }
 }
